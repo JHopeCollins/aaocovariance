@@ -60,7 +60,7 @@ parameters = {
         "ksp_type": "chebyshev",                  # Chebyshev iterations
         "ksp_chebyshev_esteig": "0.95,0,0,1.05",  # Arnoldi estimate of eigenvalues
         "esteig_ksp_max_it": 30,                  # Number of Arnoldi iterations
-        "pc_type": "pbjacobi"                     # Point Jacobi preconditioner
+        "pc_type": "pbjacobi"                     # Point Jacobi preconditioner (use "none" for unpreconditioned)
     },
 }
 # Configure options specifically for block j with 'circulant_block_{j}'

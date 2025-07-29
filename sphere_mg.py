@@ -95,16 +95,18 @@ parameters = {
         "pc_mg_cycle_type": "v",          # V-cycles
         "mg_transfer_manager": f"{__name__}.ManifoldTransferManager",
         "mg_levels": {                    # Solver options for each level
-            "ksp_max_it": 5,              # Number of smoothing steps
+            "ksp_max_it": 3,              # Number of smoothing steps
             "ksp_type": "chebyshev",      # Chebyshev iterations
             "ksp_chebyshev_esteig": "0,0.25,0,1.05",  # target top end of spectrum
             "esteig_ksp_max_it": 20,
+            # Additive Schwarz method with "star" patches
             "pc_type": "python",
-            "pc_python_type": "firedrake.ASMStarPC",  # Additive Schwarz method with "star" patches
+            "pc_python_type": "firedrake.ASMStarPC",
             "pc_star": {
                 "construct_dim": 0,
                 "sub_sub_pc_type": "lu"
             },
+            # Alternatively use point Jacobi again with "pc_type": "pbjacobi"
         },
         "mg_coarse": {  # Direct LU solve with MUMPS on coarsest grid
             "pc_type": "python",
